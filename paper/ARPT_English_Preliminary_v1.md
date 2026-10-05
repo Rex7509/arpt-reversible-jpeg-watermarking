@@ -68,7 +68,7 @@ Figure 1. Self-contained encoding and decoding. The encoder stores the message a
 A spatial integer-rounding heuristic is used as an external baseline comparator. Given a quantized DCT block $A$ and the candidate $B = T(A)$ obtained by swapping AC coefficients (1,4), a standard orthonormal float32 inverse discrete cosine transform (IDCT) produces the corresponding spatial blocks $I_A$ and $I_B$. The rounding residual at pixel $(m,n)$ is defined as
 
 $$
-r[m,n] = |I[m,n] - \operatorname{round}(I[m,n])| \in [0, 0.5]. \tag{4}
+r[m,n] = |I[m,n] - \mathrm{round}(I[m,n])| \in [0, 0.5]. \tag{4}
 $$
 
 With the integer-proximity threshold set to $T_{\mathrm{hr}} = 0.3$, the number of qualifying pixels among the 64 pixels is counted:
@@ -119,7 +119,7 @@ Each feature type is linearly projected to 64 dimensions. Learnable position and
 The shared scorer comprises this entire pipeline. Using the same parameters, the model scores the original candidate order and the reversed order, divides their score difference by 2, and applies a sigmoid to obtain the predicted swap-state probability:
 
 $$
-f(A,B,z) = \frac{g(A,B,z)-g(B,A,-z)}{2}, \qquad p = \operatorname{sigmoid}(f)=\frac{1}{1+\exp(-f)}. \tag{9}
+f(A,B,z) = \frac{g(A,B,z)-g(B,A,-z)}{2}, \qquad p = \mathrm{sigmoid}(f)=\frac{1}{1+\exp(-f)}. \tag{9}
 $$
 
 Here, $g$ is the shared scorer, $z$ is the distribution-difference vector in Eq. (7), and $p$ is the probability that the model classifies input block A as swapped. Reversing the candidate order exchanges their features and negates the differences, while leaving the sums unchanged. Consequently, the score difference $f$ changes sign, giving the model its antisymmetric structure. In direct classification, a probability of at least 0.5 indicates a swapped block. At $f=0$, the probability is exactly 0.5 in either order; the threshold rule therefore does not imply complementary hard labels at this tie.
@@ -165,8 +165,8 @@ The bootstrap and control regions store information using reversible histogram s
 $$
 a' = \begin{cases}
 0, & a = 0, \\
-\operatorname{sign}(a)(1+d), & |a| = 1, \\
-a + \operatorname{sign}(a), & |a| > 1.
+\mathrm{sign}(a)(1+d), & |a| = 1, \\
+a + \mathrm{sign}(a), & |a| > 1.
 \end{cases} \tag{11}
 $$
 
@@ -181,8 +181,8 @@ Four lossless storage methods are compared: direct bit packing (packed), zlib co
 Combinatorial encoding [8] records the index of the error-position set among all possible sets of $w$ errors in $K$ positions. For error positions $0 \le a_1 < \cdots < a_w < K$, the index and required bit count are
 
 $$
-\operatorname{rank} = \sum_{i=1}^{w}\binom{a_i}{i}, \qquad
-0 \le \operatorname{rank} < \binom{K}{w}, \qquad
+\mathrm{rank} = \sum_{i=1}^{w}\binom{a_i}{i}, \qquad
+0 \le \mathrm{rank} < \binom{K}{w}, \qquad
 B_{\mathrm{rank}} = \left\lceil\log_2\binom{K}{w}\right\rceil. \tag{12}
 $$
 
