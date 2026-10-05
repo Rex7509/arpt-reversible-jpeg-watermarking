@@ -3,7 +3,7 @@
 Preliminary manuscript — not peer reviewed.  
 Date: 2026-10-05
 
-**Shao-An Chien**  
+**Shao-An Chien, Zhan-He Ou**  
 Department of Computer Science and Information Engineering, Ming Chuan University  
 Email: `11360483@me.mcu.edu.tw`, `rex99075@gmail.com`
 
