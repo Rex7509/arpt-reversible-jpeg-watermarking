@@ -1,6 +1,10 @@
 # ARPT reversible JPEG watermarking
 
-**Preliminary manuscript — not peer reviewed.** Exploratory English manuscript derived from the Chinese version 3 lineage. Prepared for arXiv; not submitted or accepted.
+**Preliminary manuscript — not peer reviewed.** Derived from the Chinese version 3 manuscript.
+
+初步稿已公開於 GitHub，後續規劃投稿 arXiv、國內研討會及相關學術期刊。
+
+The preliminary manuscript is publicly available on GitHub. Future submissions to arXiv, domestic conferences, and relevant academic journals are planned. These are plans, not claims of submission or acceptance.
 
 ## Contents
 
